@@ -1,0 +1,71 @@
+
+<!DOCTYPE HTML>
+<!-- HTML5 -->
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127114647-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-127114647-1');
+    </script>
+
+    <meta charset="UTF-8">
+
+    <title>napple.xyz TOP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" href="https://napple.xyz/napple.ico">
+    <script>
+        const lucks = ["大吉","中吉","吉","大吉"];
+        const advices = [
+            "早く寝るべし",
+            "ヤクルト1000を飲むべし",
+            "なにか新しいことを始めるとよし",
+            "いつもより一本早い電車に乗るとよし",
+            "「べき」思考をやめるべし",
+            "水分補給を怠ることなきよう",
+        ];
+
+        window.addEventListener("load",()=>{
+            const ymd = (()=>{
+                const date = new Date();
+                return date.getFullYear()+"/"+("0"+(date.getMonth()+1)).slice(-2)+"/"+("0"+date.getDate()).slice(-2)
+            })();
+            
+            let uranai = document.querySelector(".uranai");
+            if(!(localStorage.ymd && localStorage.ymd==ymd && localStorage.message)){
+                const message = lucks[Math.floor(lucks.length*Math.random())]+":"+advices[Math.floor(advices.length*Math.random())];
+                localStorage.message = message;
+            }
+            uranai.innerHTML = localStorage.message;
+            localStorage.ymd = ymd;
+        });
+    </script>
+    <style>
+        html,body{
+            width:100%;
+            height: 100%;
+            background-color: black;
+            margin:0;
+            padding:0;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .uranai{
+            color:white;
+            font-size:300%;
+        }
+    </style>
+  </head>
+  <body>
+    <span class="uranai">
+    </span>
+  </body>
+</html>
